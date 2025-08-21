@@ -1,0 +1,193 @@
+.SlideNav {
+     list-style: none;
+     display: flex;
+     justify-content: center;
+     -moz-transition: 0.8s ease-in;
+     -o-transition: 0.8s ease-in;
+     -webkit-transition: 0.3s ease-in !important;
+     -moz-transition: 0.3s ease-in !important;
+     -o-transition: 0.3s ease-in !important;
+     transition: 0.3s ease-in !important;
+
+}
+
+
+
+.btn {
+     padding: 1rem;
+     cursor: pointer;
+     -moz-transition: 0.8s ease-in;
+     -o-transition: 0.8s ease-in;
+     -webkit-transition: 0.3s ease-in !important;
+     -moz-transition: 0.3s ease-in !important;
+     -o-transition: 0.3s ease-in !important;
+     transition: 0.3s ease-in !important;
+}
+
+.bullet {
+     width: 50px;
+     height: 7px;
+     background: lightgray;
+
+     -moz-transition: 0.5s ease-in;
+     -o-transition: 0.5s ease-in;
+     -webkit-transition: 0.2s ease-in !important;
+     -moz-transition: 0.2s ease-in !important;
+     -o-transition: 0.2s ease-in !important;
+     transition: 0.2s ease-in !important;
+}
+
+.bulletActive {
+     width: 50px;
+     height: 7px;
+     background: #ff6b21;
+     border-radius: 100px;
+     -moz-transition: 0.8s ease-in;
+     -o-transition: 0.8s ease-in;
+     -webkit-transition: 0.3s ease-in !important;
+     -moz-transition: 0.3s ease-in !important;
+     -o-transition: 0.3s ease-in !important;
+     transition: 0.3s ease-in !important;
+     z-index: 999;
+}
+
+.bullet:hover {
+     background: #ff6b21;
+}
+
+
+
+
+
+
+
+/*
+  *
+  *
+  DENTRO DO aCRRUCEL
+  *
+  *
+  */
+
+
+
+/*--------------------------------------------------------------------- import Fonts ---------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan&display=swap');
+
+/*****---------------------------------------- 1) font-family: 'Rajdhani', sans-serif;
+ 2) font-family: 'Poppins', sans-serif;
+ ----------------------------------------*****/
+
+
+/*--------------------------------------------------------------------- import Files ---------------------------------------------------------------------*/
+
+/*-- header area --*/
+
+
+/*--------------------------------------------------------------------- top banner area ---------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------- layout new css ---------------------------------------------------------------------*/
+.text-bg {
+     text-align: left;
+     max-width: 630px;
+     margin-left: 15%;
+     width: 100%;
+
+     float: left;
+
+}
+.text-bg h1 {
+     
+     font-size: 90px;
+     line-height: 90px;
+     left: -150;
+     padding-bottom: 70px;
+     font-weight: bold;
+}
+
+.text-bg span {
+     font-family: 'Satoshi', cursive;
+
+     font-size: 40px;
+     line-height: 77px;
+     font-weight: bold;
+     padding-bottom: 20px;
+     display: block;
+}
+
+.text-bg p {
+     font-size: 20px;
+     line-height: '35px';
+     font-weight: bolder;
+}
+
+@media (max-width: 1750px) {
+     .text-bg h1 {
+          font-size: 80px;
+          width: 85%;
+     }
+
+     .text-bg p {
+          font-size: 17px;
+          width: 85%;
+     }
+
+}
+
+@media (max-width: 1116px) {
+     .text-bg h1 {
+          font-size: 70px;
+          width: 85%;
+     }
+
+     .text-bg p {
+          font-size: 14px;
+          width: 85%;
+     }
+}
+
+
+
+
+.padding_right1 {
+     padding-right: 0;
+}
+
+.titlepage {
+     text-align: center;
+     padding-bottom: 60px;
+}
+
+.titlepage h2 {
+     font-size: 50px;
+     color: #3e3e3e;
+     line-height: 50px;
+     font-weight: bold;
+     padding: 0;
+}
+
+.d_flex {
+     display: flex;
+     align-items: center;
+     flex-wrap: wrap;
+}
+
+
+
+.col-md-5 {
+     -ms-flex: 0 0 41.666667%;
+     flex: 0 0 41.666667%;
+     max-width: 41.666667%
+}
+
+
+
+.col-md-7 {
+     -ms-flex: 0 0 58.333333%;
+     flex: 0 0 58.333333%;
+     max-width: 58.333333%
+}
