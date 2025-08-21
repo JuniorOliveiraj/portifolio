@@ -2,7 +2,7 @@ import { useTheme, styled } from '@mui/material';
 import { Grid, Container, useMediaQuery, Box } from '@mui/material';
 //
 import { varFadeInUp, MotionInView } from '../../animate';
-import Spline from '@splinetool/react-spline';
+import React, { Suspense, lazy } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -31,6 +31,7 @@ const SplineWrapper = styled(Box)(({ theme }) => ({
 export default function Robo3d() {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+    const Spline = lazy(() => import('@splinetool/react-spline'));
 
     return (
         <RootStyle>
@@ -44,9 +45,11 @@ export default function Robo3d() {
                 <Grid container spacing={isDesktop ? 10 : 5}>
                     <Grid item xs={12}>
                         <MotionInView variants={varFadeInUp}>
-                            <SplineWrapper>
-                                <Spline scene="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode" />
-                            </SplineWrapper>
+                            <Suspense fallback={<div>Carregando 3D...</div>}>
+                                <SplineWrapper>
+                                    <Spline scene="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode" />
+                                </SplineWrapper>
+                            </Suspense>
                         </MotionInView>
                     </Grid>
                 </Grid>

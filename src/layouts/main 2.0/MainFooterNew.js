@@ -10,7 +10,7 @@ import { PATH_PAGE } from '../../routes/paths';
 import Logo from '../../components/Logo';
 import { motion } from 'framer-motion';
 import { varFadeIn, varFadeInUp, varWrapEnter, varFadeInRight } from '../../components/animate';
-import Spline from '@splinetool/react-spline';
+import React, { Suspense, lazy } from "react";
 import MotionInView from '../../components/animate/MotionInView';
 import { useEffect, useRef } from 'react';
 // ----------------------------------------------------------------------
@@ -178,6 +178,8 @@ const SplineWrapper = styled(Box)(({ theme }) => ({
 }));
 
 function Element3d() {
+  const Spline = lazy(() => import('@splinetool/react-spline'));
+
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const splineWrapperRef = useRef(null);
@@ -208,11 +210,15 @@ function Element3d() {
         display: !isDesktop ? 'none' : 'flex',
       }}
     >
-      <SplineWrapper ref={splineWrapperRef}>
-        <Spline
-          scene="https://prod.spline.design/U7gv7mSf8PY-0JEj/scene.splinecode"
-        />
-      </SplineWrapper>
+
+      <Suspense fallback={<div>Carregando 3D...</div>}>
+        <SplineWrapper ref={splineWrapperRef}>
+          <Spline
+            scene="https://prod.spline.design/U7gv7mSf8PY-0JEj/scene.splinecode"
+          />
+        </SplineWrapper>
+      </Suspense>
+
     </Box>
   );
 }

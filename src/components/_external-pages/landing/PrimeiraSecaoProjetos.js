@@ -1,5 +1,3 @@
-
-
 // material
 import { alpha, useTheme, styled } from '@mui/material';
 import { Box, Grid, Chip, Card, Container, Typography, useMediaQuery, Button, Stack, Link, CardContent } from '@mui/material';
@@ -8,6 +6,12 @@ import { varFadeInUp, MotionInView, varFadeIn } from '../../animate';
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import React from "react";
+
+// lazy load images
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 // material
 const cards = [
   {
@@ -36,7 +40,6 @@ const cards = [
   },
 ];
 
-
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -45,7 +48,6 @@ const RootStyle = styled('div')(({ theme }) => ({
     paddingBottom: theme.spacing(15)
   }
 }));
-
 
 // ----------------------------------------------------------------------
 const HeroOverlayLeft = styled(motion.img)({
@@ -57,7 +59,7 @@ const HeroOverlayLeft = styled(motion.img)({
   objectFit: 'contain',
   zIndex: 1,
   pointerEvents: 'none',
-    opacity: 0.3,
+  opacity: 0.3,
 });
 
 const HeroOverlayRight = styled(motion.img)({
@@ -74,51 +76,51 @@ const HeroOverlayRight = styled(motion.img)({
 
 export default function PrimeiraSecaoProjetos() {
   const theme = useTheme();
-  const isLight = theme.palette.mode === 'light';
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
     <RootStyle>
-        <HeroOverlayLeft
-    alt="degrade-left"
-    src="static/mock-images/imageHome/degradeAzul2.png"
-    variants={varFadeIn}
-  />
-  <HeroOverlayRight
-    alt="degrade-right"
-    src="static/mock-images/imageHome/degradeAzul.png"
-    variants={varFadeIn}
-  />
+      <HeroOverlayLeft
+        alt="degrade-left"
+        src="static/mock-images/imageHome/degradeAzul2.png"
+        variants={varFadeIn}
+      />
+      <HeroOverlayRight
+        alt="degrade-right"
+        src="static/mock-images/imageHome/degradeAzul.png"
+        variants={varFadeIn}
+      />
 
-  {/* Conteúdo central */}
-  <Container maxWidth={isDesktop ? false : 'lg'}
-    sx={{
-      maxWidth: isDesktop ? 'calc(1200px * 1.2)' : undefined,
-      position: 'relative',
-      zIndex: 2, // garantir que fique acima das imagens
-    }}
-  ></Container>
-      <Container maxWidth={isDesktop ? false : 'lg'}
+      <Container
+        maxWidth={isDesktop ? false : 'lg'}
         sx={{
-          maxWidth: isDesktop ? 'calc(1200px * 1.2)' : undefined // 1200px é o valor base do 'lg'
-        }} >
+          maxWidth: isDesktop ? 'calc(1200px * 1.2)' : undefined,
+          position: 'relative',
+          zIndex: 2,
+        }}
+      />
+
+      <Container
+        maxWidth={isDesktop ? false : 'lg'}
+        sx={{
+          maxWidth: isDesktop ? 'calc(1200px * 1.2)' : undefined,
+        }}
+      >
         <Grid container spacing={isDesktop ? 10 : 5}>
           <Grid item xs={12} md={12}>
-            <MotionInView variants={varFadeInUp}> 
+            <MotionInView variants={varFadeInUp}>
               <ResultsSection />
             </MotionInView>
+
             <MotionInView variants={varFadeInUp}>
               <CarouselWithCard />
             </MotionInView>
           </Grid>
         </Grid>
       </Container>
-
     </RootStyle>
   );
 }
-
-
 
 function ResultsSection() {
   return (
@@ -133,10 +135,8 @@ function ResultsSection() {
         textAlign: "center",
       }}
     >
-
       {/* Header with Highlight */}
       <Stack direction="Column" gap={2} alignItems="center">
-        {/* Dotted Highlight */}
         <Box
           sx={{
             width: "50px",
@@ -145,8 +145,8 @@ function ResultsSection() {
               "linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(153,153,153,0) 100%)",
             borderRadius: "10px",
             position: "relative",
-          }}>
-          {/* Blue Line */}
+          }}
+        >
           <Box
             sx={{
               width: 50,
@@ -183,8 +183,6 @@ function ResultsSection() {
             Results
           </Typography>
         </Box>
-
-
       </Stack>
 
       {/* Title */}
@@ -236,11 +234,11 @@ function ResultsSection() {
         Entrar em contato
       </Button>
 
-      {/* Detail SVG Right */}
       <Box sx={{ width: "100px", height: "40px", backgroundColor: "black" }} />
     </Box>
   );
 }
+
 function CarouselWithCard() {
   return (
     <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
@@ -288,7 +286,7 @@ function CarouselWithCard() {
           960: { slidesPerView: 3 },
         }}
       >
-        {[...cards, ...cards, ...cards, ...cards].map((card, index) => (
+        {cards.concat(cards).map((card, index) => (
           <SwiperSlide key={index}>
             <Card
               sx={{
@@ -305,23 +303,21 @@ function CarouselWithCard() {
                 margin: 2,
               }}
             >
-              <Box
-                component="img"
+              <LazyLoadImage
+                effect="blur"
                 src={card.img}
                 alt={card.company}
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                }}
+                width="100%"
+                height="450px"
+                style={{ objectFit: "cover" }}
               />
+
               <CardContent
                 sx={{
                   position: 'absolute',
                   bottom: 0,
                   left: 4,
                   right: 0,
-
                   width: '98%',
                   bgcolor: 'rgba(0,0,0,0.85)',
                   color: '#fff',
@@ -331,7 +327,6 @@ function CarouselWithCard() {
                 }}
               >
                 <Stack direction="row" alignItems="center" gap={1}>
-
                   <Typography variant="subtitle2" fontWeight="300">
                     {card.location}
                   </Typography>
@@ -354,20 +349,19 @@ function CarouselWithCard() {
                     }}
                     size="small"
                   />
-
                 </Stack>
               </CardContent>
             </Card>
           </SwiperSlide>
         ))}
       </Swiper>
+
       <Box
         component={motion.div}
         initial={{ opacity: 0.8, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: "easeInOut" }}
         sx={{
-
           width: "100%",
           height: "10px",
           backgroundColor: "rgb(0, 85, 255)",
