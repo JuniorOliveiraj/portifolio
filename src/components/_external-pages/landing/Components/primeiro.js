@@ -1,6 +1,6 @@
 
-import PrimeiroMobile from '../../../Portifolio/Home/1VhMobile/indexMobile';
-import PrimeiroVH from '../../../Portifolio/Home/vewHeight/PrimeiroVh';
+import PrimeiroMobile from '../../../../Portifolio/Home/1VhMobile/indexMobile';
+import PrimeiroVH from '../../../../Portifolio/Home/vewHeight/PrimeiroVh';
 import { motion } from 'framer-motion';
 // material
 import { styled } from '@mui/material';
@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 // routes
 
 //
-import { varWrapEnter, } from '../../animate';
+import { varWrapEnter, } from '../../../animate';
 
 // ----------------------------------------------------------------------
 

@@ -17,26 +17,28 @@ import 'swiper/css/pagination';
 // ----------------------------------------------------------------------
 
 const ScrollbarStyle = styled('div')(({ theme }) => ({
+  overflow: 'auto',
+  scrollBehavior: 'smooth', // rolagem suave
+
   "& ::-webkit-scrollbar": {
-    width: 2,
-    height: 2
+    width: 6, // aumenta um pouco para não ficar muito limitado
+    height: 6
   },
 
-  /* Track */
-  '& ::-webkit-scrollbar-track:': {
-    background: ' #f1f1f1'
+  "& ::-webkit-scrollbar-track": {
+    background: '#f1f1f1'
   },
 
-  /* Handle */
-  '& ::-webkit-scrollbar-thumb': {
-    background: theme.palette.primary.main
+  "& ::-webkit-scrollbar-thumb": {
+    background: theme.palette.primary.main,
+    borderRadius: 4 // arredonda para parecer mais natural
   },
 
-  /* Handle on hover */
-  '& ::-webkit-scrollbar-thumb:hover': {
+  "& ::-webkit-scrollbar-thumb:hover": {
     background: theme.palette.primary.light
   }
 }));
+
 export default function App() {
   useEffect(() => {
     const { hostname } = window.location;
@@ -50,14 +52,12 @@ export default function App() {
     <AlterThema>
       <ThemeProvider>
         <LenisProvider>
-          <ScrollbarStyle>
-            <ScrollToTop />
+             <ScrollToTop />
             <Settings />
             <BaseOptionChartStyle />
             <GoogleAnalytics />
             <Router />
-          </ScrollbarStyle>
-        </LenisProvider>
+         </LenisProvider>
       </ThemeProvider>
     </AlterThema>
   );

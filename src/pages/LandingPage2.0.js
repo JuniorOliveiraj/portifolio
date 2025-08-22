@@ -4,10 +4,12 @@ import { styled } from '@mui/material';
 import Page from '../components/Page';
 import LandingHero from '../components/_external-pages/landing/LandingHero';
 import LandingSobremim from '../components/_external-pages/landing/LandingSobremim';
-import PrimeiraSecaoProjetos from '../components/_external-pages/landing/PrimeiraSecaoProjetos';
-import Robo3d from '../components/_external-pages/landing/Robo3d';
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import PrimeiraSecaoProjetos from '../components/_external-pages/landing/Components/PrimeiraSecaoProjetos';
+import Robo3d from '../components/_external-pages/landing/Components/Robo3d';
+import { useRef } from 'react';
+import ProjectGrid from '../components/_external-pages/landing/Components/ProjectGrid';
+import ServicesContainer from '../components/_external-pages/landing/Components/ServicesContainer';
+import AnimatedSection from '../components/_external-pages/landing/Components/AnimatedSection';
 // ----------------------------------------------------------------------
 const metaAndTags = {
   meta_title: "Junior Oliveira - Portfólio",
@@ -31,7 +33,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function LandingPageNew() {
   const cursorRef = useRef(null);
 
-  
+
 
   return (
     <RootStyle title="home | portifolio" id="move_top" meta={metaAndTags}>
@@ -39,13 +41,15 @@ export default function LandingPageNew() {
       <ContentStyle>
         <LandingSobremim />
         <PrimeiraSecaoProjetos />
+        <ProjectGrid />
+        <ServicesContainer/>
         <Robo3d />
-
+        <AnimatedSection />
       </ContentStyle>
 
 
-      
-     
+
+
 
     </RootStyle>
   );

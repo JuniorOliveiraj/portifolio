@@ -1,7 +1,7 @@
 // material
 import { alpha, useTheme, styled } from '@mui/material';
 import { Box, Grid, Chip, Card, Container, Typography, useMediaQuery, Button, Stack, Link, CardContent } from '@mui/material';
-import { varFadeInUp, MotionInView, varFadeIn } from '../../animate';
+import { varFadeInUp, MotionInView, varFadeIn } from '../../../animate';
 //
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';

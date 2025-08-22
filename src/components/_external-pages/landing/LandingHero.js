@@ -11,6 +11,7 @@ import { PATH_DOCS } from '../../../routes/paths';
 import { varFadeIn, varFadeInUp, varWrapEnter, varFadeInRight } from '../../animate';
 import useSettings from '../../../hooks/useSettings';
 import React, { Suspense, lazy } from "react";
+import CachedSpline from '../../../hooks/CachedSpline';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(motion.div)(({ theme }) => ({
@@ -88,11 +89,14 @@ export default function LandingHero() {
           </BackgroundVideo>
         </HeroOverlayStyle>
 
-      <Suspense fallback={<div>Carregando 3D...</div>}>
-        <HeroImgStyle variants={varFadeInUp}>
-          <Spline scene="https://prod.spline.design/Stpx07992dBpMkVd/scene.splinecode" />
-        </HeroImgStyle>
-      </Suspense>
+        <Suspense fallback={<div>Carregando 3D...</div>}>
+          <HeroImgStyle variants={varFadeInUp}>
+            <CachedSpline
+              sceneUrl="https://prod.spline.design/Stpx07992dBpMkVd/scene.splinecode"
+              fallback={<div>Carregando 3D...</div>}
+            />
+          </HeroImgStyle>
+        </Suspense>
 
         <Container maxWidth="lg" sx={{ transform: 'scale(1.1)' }} >
           <ContentStyle>
@@ -183,7 +187,7 @@ export default function LandingHero() {
                     color: 'white',
                     '&:hover': { bgcolor: themeColor, opacity: 0.9 },
                     fontWeight: 400,
-                    opacity: 0.8,  
+                    opacity: 0.8,
                   }}
                   startIcon={<Iconify icon={'icon-park-solid:right-c'} width={20} height={20} />}
                 >

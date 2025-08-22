@@ -1,14 +1,12 @@
 import { useTheme, styled } from '@mui/material';
 import { Grid, Container, useMediaQuery, Box } from '@mui/material';
-//
-import { varFadeInUp, MotionInView } from '../../animate';
-import React, { Suspense, lazy } from "react";
-
-// ----------------------------------------------------------------------
+import { varFadeInUp, MotionInView } from '../../../animate';
+import  { Suspense,  useState } from "react";
+import CachedSpline from '../../../../hooks/CachedSpline';
 
 const RootStyle = styled('div')(({ theme }) => ({
-    paddingTop: theme.spacing(12), // Reduzi um pouco a altura superior
-    paddingBottom: theme.spacing(10), // Reduzi um pouco a inferior
+    paddingTop: theme.spacing(12),
+    paddingBottom: theme.spacing(10),
     [theme.breakpoints.up('md')]: {
         paddingTop: theme.spacing(15),
         paddingBottom: theme.spacing(12),
@@ -17,21 +15,19 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 const SplineWrapper = styled(Box)(({ theme }) => ({
     width: '100%',
-    height: '500px', // Diminui a altura. Ajuste conforme quiser.
-    borderRadius: theme.shape.borderRadius * 2, // Bordas mais arredondadas
+    height: '500px',
+    borderRadius: theme.shape.borderRadius * 2,
     overflow: 'hidden',
-    boxShadow: theme.shadows[3], // Opcional: adiciona uma leve sombra
+    boxShadow: theme.shadows[3],
     [theme.breakpoints.up('lg')]: {
-        height: '600px', // Altura maior em telas grandes, opcional
+        height: '600px',
     },
 }));
 
-// ----------------------------------------------------------------------
-
 export default function Robo3d() {
     const theme = useTheme();
-    const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-    const Spline = lazy(() => import('@splinetool/react-spline'));
+    const isDesktop = useMediaQuery(theme.breakpoints.up('lg')); 
+    const [sceneLoaded, setSceneLoaded] = useState(false);
 
     return (
         <RootStyle>
@@ -47,7 +43,12 @@ export default function Robo3d() {
                         <MotionInView variants={varFadeInUp}>
                             <Suspense fallback={<div>Carregando 3D...</div>}>
                                 <SplineWrapper>
-                                    <Spline scene="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode" />
+                                   
+                                                <CachedSpline
+              sceneUrl="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode"
+              fallback={<div>Carregando 3D...</div>}
+            />
+                                    {!sceneLoaded && <div>Carregando cena...</div>}
                                 </SplineWrapper>
                             </Suspense>
                         </MotionInView>

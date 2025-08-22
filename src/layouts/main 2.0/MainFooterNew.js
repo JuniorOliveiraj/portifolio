@@ -9,10 +9,11 @@ import { PATH_PAGE } from '../../routes/paths';
 //
 import Logo from '../../components/Logo';
 import { motion } from 'framer-motion';
-import { varFadeIn, varFadeInUp, varWrapEnter, varFadeInRight } from '../../components/animate';
-import React, { Suspense, lazy } from "react";
+import { varFadeIn, varFadeInUp } from '../../components/animate';
+import  { Suspense, lazy } from "react";
 import MotionInView from '../../components/animate/MotionInView';
 import { useEffect, useRef } from 'react';
+import CachedSpline from '../../hooks/CachedSpline';
 // ----------------------------------------------------------------------
 
 const SOCIALS = [
@@ -213,8 +214,10 @@ function Element3d() {
 
       <Suspense fallback={<div>Carregando 3D...</div>}>
         <SplineWrapper ref={splineWrapperRef}>
-          <Spline
-            scene="https://prod.spline.design/U7gv7mSf8PY-0JEj/scene.splinecode"
+
+          <CachedSpline
+            sceneUrl="https://prod.spline.design/U7gv7mSf8PY-0JEj/scene.splinecode"
+            fallback={<div>Carregando 3D...</div>}
           />
         </SplineWrapper>
       </Suspense>
