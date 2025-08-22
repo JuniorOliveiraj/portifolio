@@ -13,36 +13,37 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Anallogue",
-    category: "Brand",
+    title: "Portfólio Next.js",
+    category: "React / Next.js",
     image: "https://framerusercontent.com/images/AZs8bVqrPji0m0GYpp5NjmuUgQ.jpg",
-    link: "./project/anallogue",
+    link: "./project/portfolio-next",
   },
   {
-    title: "Known One",
-    category: "Technical",
+    title: "E-commerce Flutter",
+    category: "Flutter",
     image: "https://framerusercontent.com/images/vlM15RHQVmAOOQnJMAbBC0C3QIg.jpg",
-    link: "./project/known-one",
+    link: "./project/flutter-ecommerce",
   },
   {
-    title: "Ninety Editions",
-    category: "Digital",
+    title: "Calculadora de Horas",
+    category: "C# / Desktop",
     image: "https://framerusercontent.com/images/MN3bBXhZNSAzp9GWQZ8fIGagwJs.jpg",
-    link: "./project/digital-product-design",
+    link: "./project/calculadora-horas",
   },
   {
-    title: "Sevenson",
-    category: "Brand",
+    title: "Bot WhatsApp",
+    category: "Node.js / Automação",
     image: "https://framerusercontent.com/images/HXfTfxTi56vuYwoeHAIHuSNEICA.jpg",
-    link: "./project/sevenson",
+    link: "./project/bot-whatsapp",
   },
   {
-    title: "X Models",
-    category: "Creative",
+    title: "Infraestrutura com Docker",
+    category: "DevOps",
     image: "https://framerusercontent.com/images/Z9PsoPh8tezSKkPC7XoUiv7aCLo.jpg",
-    link: "./project/x-models",
+    link: "./project/devops-docker",
   },
 ];
+
 
 const MotionBox = motion(Box);
 

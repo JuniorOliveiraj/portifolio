@@ -5,26 +5,27 @@ import { motion } from 'framer-motion';
 const cards = [
   {
     id: 1,
-    stage: 'Stage 1',
-    title: 'Kickoff',
-    description: 'The kickoff stage is where everything begins. We align with you to understand your goals, vision, and expectations. Through in-depth discussions and thorough research.',
-    tags: ['Comprehensive Consultation', 'Project Roadmap'],
+    stage: 'Etapa 1',
+    title: 'Planejamento',
+    description: 'Nesta fase inicial, defino os objetivos do projeto, entendo as necessidades do cliente e crio um roadmap técnico. É aqui que a visão começa a ganhar forma.',
+    tags: ['Análise de Requisitos', 'Arquitetura do Projeto'],
   },
   {
     id: 2,
-    stage: 'Stage 2',
-    title: 'Execution',
-    description: 'With a clear strategy in place, we move into the execution phase, where ideas come to life. Our team works highly efficiently and collaboratively to implement the plan.',
-    tags: ['Seamless Integration', 'Real Time Collaboration'],
+    stage: 'Etapa 2',
+    title: 'Desenvolvimento',
+    description: 'Com a base bem definida, inicio a implementação usando as melhores práticas em React, Next.js, Flutter, C# e DevOps. O foco é eficiência, escalabilidade e qualidade.',
+    tags: ['Boas Práticas', 'Código Escalável'],
   },
   {
     id: 3,
-    stage: 'Stage 3',
-    title: 'Handoff',
-    description: 'Once the design and development are finalized, we seamlessly transition to the handoff stage. We provide all assets, documentation, and support for a smooth launch.',
-    tags: ['Ongoing Support', 'Documentation'],
+    stage: 'Etapa 3',
+    title: 'Entrega & Suporte',
+    description: 'Após a conclusão, realizo testes, deploy e disponibilizo documentação completa. Ofereço suporte contínuo para garantir a evolução e estabilidade do sistema.',
+    tags: ['Testes e Deploy', 'Suporte Contínuo'],
   },
 ];
+
 
 const containerVariants = {
   hidden: {},
@@ -67,25 +68,7 @@ export default function HowWeWorkSection() {
             flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <Box
-            component={motion.div}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            sx={{
-              px: 2,
-              py: 1,
-              borderRadius: '10px',
-              background: 'linear-gradient(0.07deg, rgba(0,85,255,0.08) 0%, rgba(153,153,153,0.08) 100%)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 1,
-            }}
-          >
-            <Typography variant="caption" sx={{ color: 'white' }}>
-              How We Work?
-            </Typography>
-          </Box>
+         
 
           <Box sx={{ flex: 1 }}>
             <Typography
@@ -97,14 +80,14 @@ export default function HowWeWorkSection() {
                 fontSize: { xs: '1.8rem', md: '2.6rem' },
               }}
             >
-              We Simplify The Journey
+              Simplificamos a jornada
               <Box component="span" sx={{ display: 'block', color: 'rgba(255,255,255,0.6)' }}>
-                From Design To Launch.
+                Do design ao lançamento.
               </Box>
             </Typography>
 
             <Typography sx={{ mt: 1.5, color: 'rgba(255,255,255,0.6)' }}>
-              We make it easy to bring your ideas to life, guiding you from concept to a fully launched product.
+              Facilitamos a concretização das suas ideias, guiando você do conceito ao lançamento completo do produto.
             </Typography>
           </Box>
         </Box>
@@ -139,7 +122,7 @@ export default function HowWeWorkSection() {
             {/* Background image */}
             <Box
               component="img"
-              src="https://framerusercontent.com/images/oUAzCBZlCCsvzmsAiYQ3RDbhyg.jpeg"
+              src="https://media.licdn.com/dms/image/v2/D4D03AQFtxN7itmq-7g/profile-displayphoto-crop_800_800/B4DZivnm3pHwAU-/0/1755293054482?e=1758758400&v=beta&t=HXd3qzqh3dCKGejdoAAzAfC-7egb8nQcYR1i-5-rh14"
               alt="Ilustração / Foto"
               sx={{
                 width: '100%',
