@@ -1,7 +1,7 @@
 # Meu Site Pessoal 🚀
 
 
-![Capa do Projeto](https://www.juniorbelem.com/static/mock-images/imageHome/capa_git.png)
+
 
 
 
