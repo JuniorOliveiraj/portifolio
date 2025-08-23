@@ -25,7 +25,7 @@ const projects = [
     link: "./project/flutter-ecommerce",
   },
   {
-    title: "Calculadora de Horas",
+    title: "Api Restful .NET",
     category: "C# / Desktop",
     image: "https://framerusercontent.com/images/MN3bBXhZNSAzp9GWQZ8fIGagwJs.jpg",
     link: "./project/calculadora-horas",
