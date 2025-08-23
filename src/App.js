@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 //import RouterUniasselvi from './routesUniasselvi';
 // theme
 import ThemeProvider from './theme';
-import Settings from './components/settings';
+//import Settings from './components/settings';
 // components
 import ScrollToTop from './components/ScrollToTop';
 import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
@@ -29,7 +29,6 @@ export default function App() {
       <ThemeProvider>
         <LenisProvider>
              <ScrollToTop />
-            <Settings />
             <BaseOptionChartStyle />
             <GoogleAnalytics />
             <Router />
