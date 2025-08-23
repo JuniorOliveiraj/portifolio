@@ -1,41 +1,108 @@
 import React from 'react';
-import { Box, Container, Typography, Card, CardContent, Chip, Button, Stack } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Stack, Chip, Container, Button, Box, Typography, Card, CardContent, Grid, useMediaQuery } from '@mui/material';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import ImageCard from '../../portifolio/ImageCard';
+import { varFadeInUp, MotionInView, varFadeInDown } from '../../../animate';
+import { alpha, useTheme, styled } from '@mui/material';
+
+const RootStyle = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(15),
+  [theme.breakpoints.up('md')]: {
+    paddingBottom: theme.spacing(15)
+  }
+}));
+export default function PageLayout() {
+  const theme = useTheme();
+  const isLight = theme.palette.mode === 'light';
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  return (
+    <RootStyle>
+      <Container maxWidth="lg" >
+        <Grid container spacing={isDesktop ? 10 : 5}   >
+
+          <Grid item xs={12} md={7}>
+            <ScrollCards />
+          </Grid>
+
+          <Grid item xs={12} md={5}>
+            <StickyShowcase />
+          </Grid>
+
+        </Grid>
+      </Container>
+
+    </RootStyle>
+  );
+}
+
+
+
+
+
+function StickyShowcase() {
+
+  return (
+    <Box
+      sx={{
+        width: '100%',
+        position: { xs: 'static', md: 'sticky' },
+        top: { md: 80 },
+        alignSelf: 'flex-start'
+      }}
+    >
+      <MotionInView variants={varFadeInUp}>
+        <ImageCard image={'static/mock-images/imageHome/Imagem_terno01.png'} />
+      </MotionInView>
+    </Box>
+  );
+}
+
+
+
 
 const cards = [
   {
     id: 1,
-    stage: 'Etapa 1',
-    title: 'Planejamento',
-    description: 'Nesta fase inicial, defino os objetivos do projeto, entendo as necessidades do cliente e crio um roadmap técnico. É aqui que a visão começa a ganhar forma.',
-    tags: ['Análise de Requisitos', 'Arquitetura do Projeto'],
+    stage: 'Atualmente',
+    image:'static/mock-images/imageHome/ICONES/universobenner_logo.jpeg',
+    title: 'Desenvolvedor .Net - Benner',
+    description: 'Desenvolvimento e manutenção de sistemas em C#, .NET e bancos de dados. Atuação em demandas de RH, otimização de performance e colaboração em equipe para entrega de soluções corporativas.',
+    tags: ['C#', '.NET', 'SQL', 'PostgreSQL', 'Oracle', 'Builder', 'Runner', 'WES'],
   },
   {
-    id: 2,
-    stage: 'Etapa 2',
-    title: 'Desenvolvimento',
-    description: 'Com a base bem definida, inicio a implementação usando as melhores práticas em React, Next.js, Flutter, C# e DevOps. O foco é eficiência, escalabilidade e qualidade.',
-    tags: ['Boas Práticas', 'Código Escalável'],
+    id: 21,
+    stage: 'Atualmente',
+    image:'static/mock-images/imageHome/ICONES/JUNIOR.png',
+    title: 'Desenvolvedor Web Freelance',
+    description: 'Criação de sites institucionais, landing pages e sistemas sob demanda com React.js, Next.js e Node.js. Desenvolvimento de APIs e integrações de pagamento, com foco em UI/UX e atendimento ao cliente.',
+    tags: ['React.js', 'Next.js', 'Node.js', 'MySQL', 'Firebase', 'Tailwind CSS', 'Mercado Pago'],
   },
   {
     id: 3,
-    stage: 'Etapa 3',
-    title: 'Entrega & Suporte',
-    description: 'Após a conclusão, realizo testes, deploy e disponibilizo documentação completa. Ofereço suporte contínuo para garantir a evolução e estabilidade do sistema.',
-    tags: ['Testes e Deploy', 'Suporte Contínuo'],
+    stage: '2022 - 2024',
+    image:'static/mock-images/imageHome/ICONES/loja_mirante_logo.jpeg',
+    title: 'Designer - Loja Mirante',
+    description: 'Criação de campanhas digitais, planejamento de conteúdo e identidade visual. Aumento de engajamento e seguidores em +50% utilizando ferramentas como Photoshop, Illustrator e Canva.',
+    tags: ['Photoshop', 'Illustrator', 'Canva', 'Mailchimp', 'Marketing Digital', 'UI/UX'],
+  },
+  {
+    id: 4,
+    stage: '2022',
+    image:'static/mock-images/imageHome/ICONES/fluxogama_logo.jpeg',
+    title: 'Analista de Tecnologia - Fluxogama',
+    description: 'Desenvolvimento de software customizado em C# e .NET para setor têxtil. Participação em análise de requisitos, melhoria de processos internos e entrega de sistema funcional com foco em performance e usabilidade.',
+    tags: ['Ext JS', 'Java', 'MySQL', 'Git', 'Arquitetura em Camadas'],
+  },
+  {
+    id: 5,
+    stage: '2020 - 2022',
+    image:'static/mock-images/imageHome/ICONES/loja_mirante_logo.jpeg',
+    title: 'Expedição - Loja Mirante',
+    description: 'Primeiro emprego. Atuação em operações de expedição, logística e suporte interno da empresa.',
+    tags: ['Logística', 'Expedição', 'Gestão de Estoque'],
   },
 ];
 
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const imageVariant = {
-  hidden: { opacity: 0, x: -60, scale: 0.98 },
-  visible: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.9, ease: 'easeOut' } },
-};
 
 const cardsColumnVariant = {
   hidden: {},
@@ -47,231 +114,253 @@ const cardVariant = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'circOut' } },
 };
 
-export default function HowWeWorkSection() {
+function ScrollCards() {
+  const totalCards = cards.length;
+  console.log(totalCards);
   return (
-    <Box
-      component="section"
-      sx={{
-        bgcolor: '#07070A',
-        color: 'common.white',
-        py: { xs: 6, md: 10 },
-      }}
-    >
-      <Container maxWidth="lg">
-        {/* Header area */}
-        <Box
+    <Box component={motion.div} variants={cardsColumnVariant} initial="hidden" animate="visible">
+      <Box
+        sx={{
+          width: 50,
+          height: 2,
+          background:
+            "linear-gradient(90deg, rgba(0, 85, 255, 0) 0%, rgb(0,85,255) 50%, rgba(0, 85, 255, 0) 100%)",
+        }}
+      />
+      <Box
+        sx={{
+
+          borderRadius: "10px",
+          px: 2,
+          py: 0.5,
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+        }}
+      >
+        <Typography
+          variant="body2"
           sx={{
-            mb: { xs: 4, md: 6 },
-            display: 'flex',
-            gap: 2,
-            alignItems: 'center',
-            flexDirection: { xs: 'column', md: 'row' },
+            background:
+              "linear-gradient(90deg, rgb(255,255,255) 0%, rgba(153,153,153,0) 350%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            fontWeight: 500,
           }}
         >
-         
+          trajetória
+        </Typography>
 
-          <Box sx={{ flex: 1 }}>
+      </Box>
+      <Box
+        sx={{
+          mb: { xs: 4, md: 6 },
+          display: 'flex',
+          gap: 2,
+          alignItems: 'center',
+          flexDirection: { xs: 'column', md: 'row' },
+          marginTop: 5,
+        }}
+      >
+
+
+        <Box>
+          <Box sx={{ mb: 1 }}>
             <Typography
-              variant="h3"
-              sx={{
-                fontWeight: 700,
-                lineHeight: 1.05,
-                color: 'common.white',
-                fontSize: { xs: '1.8rem', md: '2.6rem' },
-              }}
+              variant="h1"
+              sx={{ fontWeight: 400, color: "white", mb: 3 }}
             >
-              Simplificamos a jornada
+              Minha trajetória
               <Box component="span" sx={{ display: 'block', color: 'rgba(255,255,255,0.6)' }}>
-                Do design ao lançamento.
+                Profissional e projetos
               </Box>
             </Typography>
-
-            <Typography sx={{ mt: 1.5, color: 'rgba(255,255,255,0.6)' }}>
-              Facilitamos a concretização das suas ideias, guiando você do conceito ao lançamento completo do produto.
-            </Typography>
           </Box>
-        </Box>
-
-        {/* Main content: image (left) + cards (right) */}
-        <Box
-          component={motion.div}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '360px 1fr' },
-            gap: { xs: 4, md: 6 },
-            alignItems: 'start',
-          }}
-        >
-          {/* --- FOTO (entra junto com os cards; em md+ fica sticky) --- */}
-          <Box
-            component={motion.div}
-            variants={imageVariant}
+          <Typography
+            variant="p"
             sx={{
-              position: { xs: 'relative', md: 'sticky' }, // Usando sticky
-              top: { md: '110px' },
-              alignSelf: 'start',
-              borderRadius: 2,
-              overflow: 'hidden',
-              boxShadow: (theme) => `0 8px 40px rgba(0,85,255,0.18), inset 0 -10px 30px rgba(0,0,0,0.4)`,
-              height: { xs: '320px', md: '520px' }, // Definindo altura
+              color: "rgba(255,255,255,0.6)",
+              fontWeight: 300,
             }}
           >
-            {/* Background image */}
-            <Box
-              component="img"
-              src="https://media.licdn.com/dms/image/v2/D4D03AQFtxN7itmq-7g/profile-displayphoto-crop_800_800/B4DZivnm3pHwAU-/0/1755293054482?e=1758758400&v=beta&t=HXd3qzqh3dCKGejdoAAzAfC-7egb8nQcYR1i-5-rh14"
-              alt="Ilustração / Foto"
+            Ao longo da minha carreira, venho acumulando experiências e desenvolvendo projetos que mostram minha evolução profissional, minhas habilidades e meu compromisso em entregar resultados de qualidade.
+          </Typography>
+        </Box>
+      </Box>
+
+
+      <Stack spacing={4}>
+        {cards.map((c) => (
+          <Box key={c.id} component={motion.div} variants={cardVariant}>
+            <Card
               sx={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-            />
-            {/* Small overlay tag */}
-            <Box
-              sx={{
-                position: 'absolute',
-                left: 16,
-                top: 16,
-                px: 2,
-                py: 0.5,
-                borderRadius: 1,
-                bgcolor: 'rgba(0,85,255,0.9)',
-                color: 'white',
-                fontWeight: 700,
-                fontSize: 12,
+                borderRadius: 2,
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
+                boxShadow: 'rgba(0,0,0,0.6) 0px 8px 30px',
+                overflow: 'visible',
               }}
             >
-              Stage 1
-            </Box>
-          </Box>
-
-          {/* --- CARDS (coluna) --- */}
-          <Box component={motion.div} variants={cardsColumnVariant}>
-            <Stack spacing={4}>
-              {cards.map((c) => (
-                <Box
-                  key={c.id}
-                  component={motion.div}
-                  variants={cardVariant}
-                  sx={{
-                    transformOrigin: 'top center',
-                  }}
-                >
-                  <Card
+              <CardContent sx={{ pb: 3 }}>
+                <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
+                  {/* Ícone fake */}
+                  <Box
                     sx={{
-                      borderRadius: 2,
-                      background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
-                      boxShadow: 'rgba(0,0,0,0.6) 0px 8px 30px',
-                      overflow: 'visible',
+                      minWidth: 56,
+                      minHeight: 56,
+                      borderRadius: 1.5,
+                      bgcolor: 'rgba(0,85,255,0.12)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: 'inset 0 -6px 14px rgba(0,0,0,0.4)',
+                      position: 'relative', // necessário para o efeito do motion.div
                     }}
                   >
-                    <CardContent sx={{ position: 'relative', pb: 3 }}>
-                      {/* Top: small icon area */}
-                      <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
-                        <Box
+                    {/* Imagem quadrada de 28x28 */}
+                    <Box
+                      component="img"
+                      src={c.image}
+                      alt="Ícone"
+                      sx={{
+                        width: 28,
+                        height: 28,
+                      }}
+                    />
+
+                    {/* Efeito de blur */}
+                    <Box
+                      component={motion.div}
+                      initial={{ opacity: 0.8, scale: 1 }}
+                      animate={{ opacity: 0.2, scale: 1 }}
+                      transition={{ duration: 1, ease: "easeInOut" }}
+                      sx={{
+                        position: "absolute",
+                        width: "200px",
+                        height: "200px",
+                        backgroundColor: "rgb(0, 85, 255)",
+                        filter: "blur(40px)",
+                        borderRadius: "50%",
+                        top: "1%",
+                        left: "1%",
+                        transform: "translate(-50%, -50%)",
+                        zIndex: -1,
+                      }}
+                    />
+                  </Box>
+
+
+                  {/* Conteúdo */}
+                  <Box sx={{ flex: 1 }}>
+                    <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+                      {c.stage}
+                    </Typography>
+                    <Typography variant="h6" sx={{ mt: 0.5, mb: 1 }}>
+                      {c.title}
+                    </Typography>
+
+                    <Typography sx={{ color: 'rgba(255,255,255,0.65)' }}>{c.description}</Typography>
+
+                    <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
+                      {c.tags.map((t) => (
+                        <Chip
+                          key={t}
+                          size="small"
+                          label={t}
                           sx={{
-                            minWidth: 56,
-                            minHeight: 56,
-                            borderRadius: 1.5,
-                            bgcolor: 'rgba(0,85,255,0.12)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            boxShadow: 'inset 0 -6px 14px rgba(0,0,0,0.4)',
+                            bgcolor: 'rgba(255,255,255,0.04)',
+                            color: 'rgba(255,255,255,0.85)',
+                            borderRadius: 2,
                           }}
-                        >
-                          {/* small svg icon */}
-                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                            <path
-                              d="M12 2C8.13 2 5 5.13 5 9c0 4.25 3.4 7.98 7 10.9 3.6-2.92 7-6.65 7-10.9 0-3.87-3.13-7-7-7z"
-                              fill="white"
-                              opacity="0.95"
-                            />
-                            <circle cx="12" cy="9" r="2.5" fill="#0055FF" />
-                          </svg>
-                        </Box>
-
-                        <Box sx={{ flex: 1 }}>
-                          <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.7)' }}>
-                            {c.stage}
-                          </Typography>
-                          <Typography variant="h6" sx={{ mt: 0.5, mb: 1 }}>
-                            {c.title}
-                          </Typography>
-
-                          <Typography sx={{ color: 'rgba(255,255,255,0.65)' }}>
-                            {c.description}
-                          </Typography>
-
-                          <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
-                            {c.tags.map((t) => (
-                              <Chip
-                                key={t}
-                                size="small"
-                                label={t}
-                                sx={{
-                                  bgcolor: 'rgba(255,255,255,0.04)',
-                                  color: 'rgba(255,255,255,0.85)',
-                                  borderRadius: 2,
-                                }}
-                              />
-                            ))}
-                          </Stack>
-                        </Box>
-                      </Box>
-
-                      {/* Footer buttons/tags */}
-                      {c.id === 3 && (
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            mt: 3,
-                          }}
-                        >
-                          <Button
-                            variant="contained"
-                            href="/contact"
-                            sx={{
-                              bgcolor: '#0055FF',
-                              px: 3,
-                              py: 1,
-                              borderRadius: 2,
-                              boxShadow: '0 8px 40px rgba(0,85,255,0.25)',
-                              '&:hover': { bgcolor: '#0047d1' },
-                            }}
-                          >
-                            Book an Appointment
-                          </Button>
-
-                          <Stack direction="row" spacing={1}>
-                            <Chip
-                              size="small"
-                              label="Ongoing Support"
-                              sx={{ bgcolor: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.7)' }}
-                            />
-                            <Chip
-                              size="small"
-                              label="Documentation"
-                              sx={{ bgcolor: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.7)' }}
-                            />
-                          </Stack>
-                        </Box>
-                      )}
-                    </CardContent>
-                  </Card>
+                        />
+                      ))}
+                    </Stack>
+                  </Box>
                 </Box>
-              ))}
-            </Stack>
+
+                {/* Footer apenas no último card */}
+                {c.id === totalCards && (
+
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      mt: 3,
+                      marginTop: 9,
+                    }}
+                  >
+
+                    <Button
+                      variant="contained"
+                      href="/contact"
+                      sx={{
+                        bgcolor: '#0055FF',
+                        px: 3,
+                        py: 1,
+                        borderRadius: 2,
+                        boxShadow: '0 8px 40px rgba(0,85,255,0.25)',
+                        '&:hover': { bgcolor: '#0047d1' },
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                      }}
+                    >
+                      {/* Texto com espaçamento */}
+                      <Box sx={{ mr: 2 }}>Ler mais sobre minha trajetória</Box>
+
+                      <Box
+                        sx={{
+                          width: 36,
+                          height: 36,
+                          borderRadius: "50%",
+                          border: "1px solid rgba(250,250,250,0.12)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: "transparent",
+                          transition: "transform 0.18s ease, background 0.18s ease",
+                          "&:hover": {
+                            transform: "translateY(-2px)",
+                            background: "rgba(255,255,255,0.02)",
+                          },
+                          "& svg": {
+                            transition: "transform 0.2s ease",
+                          },
+                          "a:hover & svg, &:hover svg": {
+                            transform: "translateY(-1px)",
+                          },
+                          color: "rgba(250,250,250,0.6)",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 256 256"
+                          width="18"
+                          height="18"
+                          fill="rgba(250,250,250,0.6)"
+                          aria-hidden
+                        >
+                          <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z" />
+                        </svg>
+                      </Box>
+                    </Button>
+
+
+                    <Stack direction="row" spacing={1}>
+
+                      <Chip
+                        size="small"
+                        label="Documentation"
+                        sx={{ bgcolor: 'rgba(255,255,255,0.03)', color: 'rgba(255,255,255,0.7)' }}
+                      />
+                    </Stack>
+                  </Box>
+                )}
+              </CardContent>
+            </Card>
           </Box>
-        </Box>
-      </Container>
+        ))}
+      </Stack>
     </Box>
   );
 }

@@ -1,6 +1,6 @@
 // material
-import { alpha, useTheme, styled } from '@mui/material';
-import { Box, Grid, Card, Container, Typography, useMediaQuery, Button, Stack, Link } from '@mui/material';
+import { useTheme, styled } from '@mui/material';
+import { Box, Grid, Container, Typography, useMediaQuery, Button, Stack, Link } from '@mui/material';
 //
 import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
@@ -8,14 +8,14 @@ import { motion } from "framer-motion";
 import Iconify from '../../Iconify';
 import ImageCard from '../portifolio/ImageCard';
 // ----------------------------------------------------------------------
- 
+
 const RootStyle = styled('div')(({ theme }) => ({
     paddingTop: theme.spacing(15),
     [theme.breakpoints.up('md')]: {
         paddingBottom: theme.spacing(15)
     }
 }));
- 
+
 
 // ----------------------------------------------------------------------
 
@@ -61,14 +61,14 @@ function HighlightSection() {
                 {/* Dotted Highlight Tag */}
                 <Stack direction="column" alignItems="left" gap={2}>
                     {/* Blue Line */}
-                        <Box
-                            sx={{
-                                width: 50,
-                                height: 2,
-                                background:
-                                    "linear-gradient(90deg, rgba(0, 85, 255, 0) 0%, rgb(0,85,255) 50%, rgba(0, 85, 255, 0) 100%)",
-                            }}
-                        />
+                    <Box
+                        sx={{
+                            width: 50,
+                            height: 2,
+                            background:
+                                "linear-gradient(90deg, rgba(0, 85, 255, 0) 0%, rgb(0,85,255) 50%, rgba(0, 85, 255, 0) 100%)",
+                        }}
+                    />
                     <Box
                         sx={{
                             backdropFilter: "blur(2.5px)",
@@ -96,17 +96,17 @@ function HighlightSection() {
                             About Me
                         </Typography>
 
-                        </Box>
+                    </Box>
 
 
-                        
+
                 </Stack>
 
 
                 {/* Title */}
                 <Box>
                     <Typography variant="h2" sx={{ fontWeight: 400 }}>
-                        Junior de Oliveira Belem 
+                        Junior de Oliveira Belem
                     </Typography>
                     <Typography
                         variant="h2"
@@ -119,7 +119,7 @@ function HighlightSection() {
 
             {/* Middle Body Text */}
             <Typography variant="body1" sx={{ color: "white", opacity: 0.8 }}>
-                Gosto de criar. De entender. De simplificar. E 
+                Gosto de criar. De entender. De simplificar. E
                 <br />
                 de transformar complexidade em soluções funcionais.
             </Typography>
@@ -141,7 +141,7 @@ function HighlightSection() {
                     <Stack direction="row" gap={1} alignItems="Left">
                         <Iconify
                             icon="iconoir:verified-badge" width={20} height={20}
-                            sx={{ color: "rgb(0,85,255)" }}  />
+                            sx={{ color: "rgb(0,85,255)" }} />
                         <Typography color="white">Front-end em react & next js </Typography>
                     </Stack>
 
@@ -149,11 +149,11 @@ function HighlightSection() {
                     <Stack direction="row" gap={1} alignItems="left">
                         <Iconify
                             icon="iconoir:verified-badge" width={20} height={20}
-                            sx={{ color: "rgb(0,85,255)" }}  />
+                            sx={{ color: "rgb(0,85,255)" }} />
                         <Typography color="white">Beack-end em .net C#</Typography>
                     </Stack>
                 </Stack>
-                    <Box padding={2}  />
+                <Box padding={2} />
                 {/* Footer */}
                 <Stack
                     direction={{ xs: "column", sm: "row" }}

@@ -85,7 +85,7 @@ export default function ImageCard({ image }) {
                     left: 0,
                     right: 0,
                     height: "2px",
-                    transform:"scale(1.2)",
+                    transform: "scale(1.2)",
                     background:
                         "linear-gradient(90deg, rgba(0, 85, 255, 0) 0%, rgb(0, 85, 255) 50%, rgba(0, 85, 255, 0) 100%)",
                     transform: "translateY(-50%)",

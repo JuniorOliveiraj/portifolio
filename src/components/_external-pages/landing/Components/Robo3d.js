@@ -1,7 +1,7 @@
 import { useTheme, styled } from '@mui/material';
 import { Grid, Container, useMediaQuery, Box } from '@mui/material';
 import { varFadeInUp, MotionInView } from '../../../animate';
-import  { Suspense,  useState } from "react";
+import { Suspense, useState } from "react";
 import CachedSpline from '../../../../hooks/CachedSpline';
 
 const RootStyle = styled('div')(({ theme }) => ({
@@ -26,7 +26,7 @@ const SplineWrapper = styled(Box)(({ theme }) => ({
 
 export default function Robo3d() {
     const theme = useTheme();
-    const isDesktop = useMediaQuery(theme.breakpoints.up('lg')); 
+    const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
     const [sceneLoaded, setSceneLoaded] = useState(false);
 
     return (
@@ -43,11 +43,11 @@ export default function Robo3d() {
                         <MotionInView variants={varFadeInUp}>
                             <Suspense fallback={<div>Carregando 3D...</div>}>
                                 <SplineWrapper>
-                                   
-                                                <CachedSpline
-              sceneUrl="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode"
-              fallback={<div>Carregando 3D...</div>}
-            />
+
+                                    <CachedSpline
+                                        sceneUrl="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode"
+                                        fallback={<div>Carregando 3D...</div>}
+                                    />
                                     {!sceneLoaded && <div>Carregando cena...</div>}
                                 </SplineWrapper>
                             </Suspense>

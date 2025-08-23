@@ -42,10 +42,10 @@ export default function LandingPageNew() {
         <LandingSobremim />
         <PrimeiraSecaoProjetos />
         <ProjectGrid />
-        <ServicesContainer/>
-        <Robo3d />
-        <AnimatedSection />
+        <ServicesContainer />
       </ContentStyle>
+      <Robo3d />
+      <AnimatedSection />
 
 
 
