@@ -4,6 +4,8 @@ import { styled } from '@mui/material/styles';
 import { Button, Typography, Container, Box } from '@mui/material';
 // components
 import Page from '../components/Page';
+import { motion } from 'framer-motion';
+import { varFadeIn } from '../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +18,21 @@ const ContentStyle = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   padding: theme.spacing(12, 0)
 }));
+const BackgroundVideo = styled(motion.video)({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  opacity: 0.3,
 
+});
+const HeroOverlayStyle = styled(motion.div)({
+  zIndex: 0,
+  width: '100%',
+  height: '100vh',
+  objectFit: 'cover',
+  position: 'absolute',
+  opacity: '0.8 !important',
+});
 // ----------------------------------------------------------------------
 
 export default function Page404() {
@@ -24,6 +40,15 @@ export default function Page404() {
     <Page title="404 Page Not Found">
       <Container>
         <ContentStyle sx={{ textAlign: 'center', alignItems: 'center' }}>
+          <HeroOverlayStyle alt="overlay" variants={varFadeIn} >
+            <BackgroundVideo autoPlay muted loop playsInline>
+              <source src="static/background/a-blue-violet-plasma-sphere-on-a-dark-background-free-video.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo.
+            </BackgroundVideo>
+          </HeroOverlayStyle>
+
+
+
           <Typography variant="h3" paragraph>
             Sorry, page not found!
           </Typography>

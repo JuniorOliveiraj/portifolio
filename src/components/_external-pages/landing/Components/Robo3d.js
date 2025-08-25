@@ -27,7 +27,6 @@ const SplineWrapper = styled(Box)(({ theme }) => ({
 export default function Robo3d() {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-    const [sceneLoaded, setSceneLoaded] = useState(false);
 
     return (
         <RootStyle>
@@ -43,12 +42,10 @@ export default function Robo3d() {
                         <MotionInView variants={varFadeInUp}>
                             <Suspense fallback={<div>Carregando 3D...</div>}>
                                 <SplineWrapper>
-
                                     <CachedSpline
                                         sceneUrl="https://prod.spline.design/JP9BGV4pgrg71SND/scene.splinecode"
                                         fallback={<div>Carregando 3D...</div>}
                                     />
-                                    {!sceneLoaded && <div>Carregando cena...</div>}
                                 </SplineWrapper>
                             </Suspense>
                         </MotionInView>

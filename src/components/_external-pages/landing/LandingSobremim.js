@@ -2,7 +2,7 @@
 import { useTheme, styled } from '@mui/material';
 import { Box, Grid, Container, Typography, useMediaQuery, Button, Stack, Link } from '@mui/material';
 //
-import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
+import { varFadeInUp, MotionInView } from '../../animate';
 
 import { motion } from "framer-motion";
 import Iconify from '../../Iconify';
@@ -16,12 +16,10 @@ const RootStyle = styled('div')(({ theme }) => ({
     }
 }));
 
-
 // ----------------------------------------------------------------------
 
 export default function LandingSobremim() {
     const theme = useTheme();
-    const isLight = theme.palette.mode === 'light';
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
     return (

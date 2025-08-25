@@ -11,13 +11,13 @@ import ProjectGrid from '../components/_external-pages/landing/Components/Projec
 import ServicesContainer from '../components/_external-pages/landing/Components/ServicesContainer';
 import AnimatedSection from '../components/_external-pages/landing/Components/AnimatedSection';
 import TituloVews from '../components/_external-pages/landing/Components/TituloVews';
-import DualMarqueeGallery from '../components/_external-pages/landing/Components/DualMarqueeGallery';
+import DualMarqueeGallery from '../components/_external-pages/landing/Components/DualMarqueeGallery'; 
 // ----------------------------------------------------------------------
 const metaAndTags = {
   meta_title: "Junior Oliveira - Portfólio",
   meta_description:
     "Portfólio Junior Oliveira, desenvolvedor React com foco em aplicações web, dashboards e sistemas administrativos.",
-  meta_tags: "react,, application, dashboard, junior oliveira, junior belem , belem, canaa, app react , junior react, belem junior, junior belem,"
+  meta_tags: "react, DEV, application, dashboard, junior oliveira, junior belem , belem, canaa, app react , junior react, belem junior, junior belem,"
 }
 const RootStyle = styled(Page)({
   height: '100%'
@@ -55,9 +55,7 @@ export default function LandingPageNew() {
           bottomImages={bottomImages}
         />
       </ContentStyle>
-
-
-    </RootStyle>
+     </RootStyle>
   );
 }
 

@@ -1,7 +1,6 @@
 // routes
 import Router from './routes';
 import React, { useEffect } from 'react';
-//import RouterUniasselvi from './routesUniasselvi';
 // theme
 import ThemeProvider from './theme';
 //import Settings from './components/settings';
@@ -20,7 +19,7 @@ export default function App() {
     const { hostname } = window.location;
 
     if (hostname === 'sprightly-sopapillas-5d2e9b.netlify.app') {
-      window.location.href = 'https://canaa.vercel.app' + window.location.pathname + window.location.search;
+      window.location.href = 'https://juniorbelem.com' + window.location.pathname + window.location.search;
     }
   }, []);
 

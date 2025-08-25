@@ -1,9 +1,9 @@
-import React from 'react';
+
 import { Stack, Chip, Container, Button, Box, Typography, Card, CardContent, Grid, useMediaQuery } from '@mui/material';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import ImageCard from '../../portifolio/ImageCard';
-import { varFadeInUp, MotionInView, varFadeInDown } from '../../../animate';
-import { alpha, useTheme, styled } from '@mui/material';
+import { varFadeInUp, MotionInView } from '../../../animate';
+import {  useTheme, styled } from '@mui/material';
 
 const RootStyle = styled('div')(({ theme }) => ({
   paddingTop: theme.spacing(15),
@@ -34,11 +34,6 @@ export default function PageLayout() {
     </RootStyle>
   );
 }
-
-
-
-
-
 function StickyShowcase() {
 
   return (
@@ -56,10 +51,6 @@ function StickyShowcase() {
     </Box>
   );
 }
-
-
-
-
 const cards = [
   {
     id: 1,
@@ -102,8 +93,6 @@ const cards = [
     tags: ['Logística', 'Expedição', 'Gestão de Estoque'],
   },
 ];
-
-
 const cardsColumnVariant = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.18 } },
@@ -344,10 +333,7 @@ function ScrollCards() {
                         </svg>
                       </Box>
                     </Button>
-
-
                     <Stack direction="row" spacing={1}>
-
                       <Chip
                         size="small"
                         label="Documentation"
