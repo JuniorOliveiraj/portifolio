@@ -22,7 +22,7 @@ const LinkStyle = styled(Link)(({ theme }) => ({
   }
 }));
 
- 
+
 
 // ----------------------------------------------------------------------
 
@@ -138,54 +138,65 @@ function MenuDesktopItem({ item, pathname, isHome, isOpen, isOffset, onOpen, onC
                       <IconBullet type="subheader" /> {subheader}
                     </ListSubheader>
 
-                    {items.map((item) => (
-                      <ListItem
-                        key={item.title}
-                        href="https://app.juniorbelem.com/app"
-                        component={Link}
-                        underline="none"
-                        sx={{
-                          p: 0,
-                          mt: 3,
-                          typography: 'body2',
-                          color: 'text.secondary',
-                          transition: (theme) => theme.transitions.create('color'),
-                          '&:hover': { color: 'text.primary' },
-                          ...(item.path === pathname && {
-                            typography: 'subtitle2',
-                            color: 'text.primary'
-                          })
-                        }}
-                      >
-                        {item.title === 'Dashboard' ? (
-                          <CardActionArea
-                            sx={{
-                              py: 5,
-                              px: 10,
-                              borderRadius: 2,
-                              color: 'primary.main',
-                              bgcolor: 'background.neutral'
-                            }}
-                          >
-                            <Box
-                              component={motion.img}
-                              whileTap="tap"
-                              whileHover="hover"
-                              variants={{
-                                hover: { scale: 1.02 },
-                                tap: { scale: 0.98 }
+                    {items.map((item) => {
+                      const isDashboard = item.title === 'Dashboard';
+
+                      return (
+                        <ListItem
+                          key={item.title}
+                          {...(isDashboard
+                            ? {
+                              href: 'https://app.juniorbelem.com/app',
+                              component: Link,
+                            }
+                            : {
+                              to: item.path,
+                              component: RouterLink,
+                            })}
+                          underline="none"
+                          sx={{
+                            p: 0,
+                            mt: 3,
+                            typography: 'body2',
+                            color: 'text.secondary',
+                            transition: (theme) => theme.transitions.create('color'),
+                            '&:hover': { color: 'text.primary' },
+                            ...(item.path === pathname && {
+                              typography: 'subtitle2',
+                              color: 'text.primary',
+                            }),
+                          }}
+                        >
+                          {isDashboard ? (
+                            <CardActionArea
+                              sx={{
+                                py: 5,
+                                px: 10,
+                                borderRadius: 2,
+                                color: 'primary.main',
+                                bgcolor: 'background.neutral',
                               }}
-                              src="/static/illustrations/illustration_dashboard.png"
-                            />
-                          </CardActionArea>
-                        ) : (
-                          <>
-                            <IconBullet />
-                            {item.title}
-                          </>
-                        )}
-                      </ListItem>
-                    ))}
+                            >
+                              <Box
+                                component={motion.img}
+                                whileTap="tap"
+                                whileHover="hover"
+                                variants={{
+                                  hover: { scale: 1.02 },
+                                  tap: { scale: 0.98 },
+                                }}
+                                src="/static/illustrations/illustration_dashboard.png"
+                              />
+                            </CardActionArea>
+                          ) : (
+                            <>
+                              <IconBullet />
+                              {item.title}
+                            </>
+                          )}
+                        </ListItem>
+                      );
+                    })}
                   </List>
                 </Grid>
               );
