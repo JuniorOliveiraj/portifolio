@@ -141,8 +141,8 @@ function MenuDesktopItem({ item, pathname, isHome, isOpen, isOffset, onOpen, onC
                     {items.map((item) => (
                       <ListItem
                         key={item.title}
-                        to={item.path}
-                        component={RouterLink}
+                        href="https://app.juniorbelem.com/app"
+                        component={Link}
                         underline="none"
                         sx={{
                           p: 0,
