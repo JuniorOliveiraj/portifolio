@@ -8,8 +8,7 @@ import ThemeProvider from './theme';
 import ScrollToTop from './components/ScrollToTop';
 import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 import { AlterThema } from './contexts/Themas';
-import GoogleAnalytics from './components/GoogleAnalytics';
-import LenisProvider from './components/LenisProvider';
+import GoogleAnalytics from './components/GoogleAnalytics'; 
 import 'swiper/css';
 import 'swiper/css/pagination';
 // ----------------------------------------------------------------------
@@ -25,13 +24,11 @@ export default function App() {
 
   return (
     <AlterThema>
-      <ThemeProvider>
-        <LenisProvider>
+      <ThemeProvider> 
              <ScrollToTop />
             <BaseOptionChartStyle />
             <GoogleAnalytics />
-            <Router />
-         </LenisProvider>
+            <Router /> 
       </ThemeProvider>
     </AlterThema>
   );

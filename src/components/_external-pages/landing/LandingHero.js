@@ -10,7 +10,7 @@ import { PATH_DOCS } from '../../../routes/paths';
 //
 import { varFadeIn, varFadeInUp, varWrapEnter, varFadeInRight } from '../../animate';
 import useSettings from '../../../hooks/useSettings';
-import React, { Suspense, lazy } from "react";
+import   { Suspense, } from "react";
 import CachedSpline from '../../../hooks/CachedSpline';
 // ----------------------------------------------------------------------
 
@@ -77,8 +77,7 @@ const HeroImgStyle = styled(motion.div)(({ theme }) => ({
 
 export default function LandingHero() {
   const { themeColor } = useSettings();
-  const Spline = lazy(() => import('@splinetool/react-spline'));
-
+ 
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>

@@ -10,7 +10,7 @@ import { PATH_PAGE } from '../../routes/paths';
 import Logo from '../../components/Logo';
 import { motion } from 'framer-motion';
 import { varFadeIn, varFadeInUp } from '../../components/animate';
-import  { Suspense, lazy } from "react";
+import  { Suspense } from "react";
 import MotionInView from '../../components/animate/MotionInView';
 import { useEffect, useRef } from 'react';
 import CachedSpline from '../../hooks/CachedSpline';
@@ -179,8 +179,7 @@ const SplineWrapper = styled(Box)(({ theme }) => ({
 }));
 
 function Element3d() {
-  const Spline = lazy(() => import('@splinetool/react-spline'));
-
+ 
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const splineWrapperRef = useRef(null);

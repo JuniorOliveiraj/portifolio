@@ -1,7 +1,6 @@
 import Page from '../components/Page';
 import { Container, styled } from '@mui/material';
 import ComponentHeroPortifolio from '../components/_external-pages/portifolio/ComponentHeroPortifolio';
-import Cardsportidolio from '../components/_external-pages/portifolio/Cardsportidolio';
 import ResumeAboutMe from '../Portifolio/AboutMe/resumeAboutMe';
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(8),
@@ -20,10 +19,7 @@ export default function Portifolio() {
   return (
     <RootStyle title="Portfolio | Junior Oliveira " meta={metaAndTags}>
       <ComponentHeroPortifolio />
-      <Container sx={{marginTop:10}}>
-        <ResumeAboutMe/>
-        <Cardsportidolio />
-      </Container>
+ 
     </RootStyle>
   )
 }

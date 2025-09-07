@@ -1,11 +1,10 @@
 // material
 import { useTheme, styled } from '@mui/material';
 import { Box, Grid, Chip, Card, Container, Typography, useMediaQuery, Button, Stack, Link, CardContent } from '@mui/material';
-import { varFadeInUp, MotionInView, varFadeIn } from '../../../animate';
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import React from "react";
+
 import 'swiper/css';
 
 // lazy load images
@@ -46,7 +45,7 @@ const RootStyle = styled('div')(({ theme }) => ({
   }
 }));
 
-const HeroOverlay = styled(motion.img)(({ side }) => ({
+const HeroOverlay = styled(`img`)(({ side }) => ({
   position: 'absolute',
   top: '30%',
   [side]: 100,
@@ -68,14 +67,12 @@ export default function PrimeiraSecaoProjetos() {
         side="left"
         alt="degrade-left"
         src="static/mock-images/imageHome/degradeAzul2.png"
-        variants={varFadeIn}
-      />
+       />
       <HeroOverlay
         side="right"
         alt="degrade-right"
         src="static/mock-images/imageHome/degradeAzul.png"
-        variants={varFadeIn}
-      />
+       />
 
       <Container
         maxWidth={isDesktop ? false : 'lg'}
@@ -87,13 +84,8 @@ export default function PrimeiraSecaoProjetos() {
       >
         <Grid container spacing={isDesktop ? 10 : 5}>
           <Grid item xs={12}>
-            <MotionInView variants={varFadeInUp}>
               <ResultsSection />
-            </MotionInView>
-
-            <MotionInView variants={varFadeInUp}>
               <CarouselWithCard />
-            </MotionInView>
           </Grid>
         </Grid>
       </Container>

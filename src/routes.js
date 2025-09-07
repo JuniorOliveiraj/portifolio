@@ -40,9 +40,6 @@ const Loadable = (Component) => (props) => {
 export default function Router() {
 
     return useRoutes([
-      
-
- 
         {
             path: '/',
             element: <MainLayoutNew to="/" />,
@@ -55,6 +52,7 @@ export default function Router() {
 
                     ]
                 },
+                {path: 'portifolio', element: <Portifolio to="/portifolio" /> },
             ],
         },
         {
@@ -75,6 +73,7 @@ export default function Router() {
 // EXTERNAL  PAGE 
 const MainLayoutNew = Loadable(lazy(() => import('./layouts/main 2.0/index')));
 const LandingPageNew = Loadable(lazy(() => import('./pages/LandingPage2.0')));   
+const Portifolio = Loadable(lazy(() => import('./pages/Portifolio')));   
 //Portifolio 
 //const Calendar = Loadable(lazy(() => import('./pages/dashboard/Calendar')));
 
